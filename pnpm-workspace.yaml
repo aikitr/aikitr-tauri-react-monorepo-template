@@ -1,0 +1,36 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# pnpm 9+ catalog：统一 workspace 内第三方依赖版本
+# 各包在 dependencies 中写 "catalog:" 即可引用此处定义的版本，避免版本漂移
+catalog:
+  react: "^19.0.0"
+  "react-dom": "^19.0.0"
+  "@tauri-apps/api": "^2"
+  "@tauri-apps/plugin-opener": "^2"
+  "@tauri-apps/plugin-dialog": "^2"
+  "@tauri-apps/plugin-fs": "^2"
+  "@tauri-apps/plugin-shell": "^2"
+  zustand: "^5"
+  "@tanstack/react-query": "^5"
+  zod: "^3"
+  clsx: "^2"
+  "tailwind-merge": "^3"
+  class-variance-authority: "^0.7"
+  "lucide-react": "^0.475"
+  typescript: "^5.8 || ^7"
+  vite: "^6"
+  tailwindcss: "^4"
+  "@tailwindcss/vite": "^4"
+  "@vitejs/plugin-react": "^4"
+  vitest: "^3"
+  "@types/react": "^19"
+  "@types/react-dom": "^19"
+  eslint: "^9"
+  prettier: "^3"
+
+# 构建脚本白名单（pnpm 默认拒绝第三方包执行 postinstall 等脚本）
+allowBuilds:
+  esbuild: true
+  "@tauri-apps/cli": true

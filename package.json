@@ -1,0 +1,42 @@
+{
+  "name": "aikitr-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Enterprise-grade cross-platform desktop application built with Tauri v2, React 19, and TypeScript.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.0.0"
+  },
+  "packageManager": "pnpm@11.13.0",
+  "scripts": {
+    "build": "turbo run build",
+    "build:frontend": "turbo run build:frontend",
+    "build:desktop": "turbo run build --filter=@aikitr-desktop/app-desktop",
+    "dev": "turbo run dev --filter=@aikitr-desktop/app-desktop",
+    "dev:frontend": "turbo run dev:frontend --filter=@aikitr-desktop/app-desktop",
+    "lint": "turbo run lint",
+    "lint:packages": "turbo run lint --filter=\"./packages/*\"",
+    "test": "turbo run test",
+    "test:watch": "turbo run test:watch",
+    "type-check": "turbo run type-check",
+    "type-check:packages": "turbo run type-check --filter=\"./packages/*\"",
+    "type-check:desktop": "turbo run type-check --filter=@aikitr-desktop/app-desktop",
+    "preflight": "turbo run type-check lint format:check test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\" --ignore-path .gitignore",
+    "clean": "turbo run clean && rimraf node_modules .turbo",
+    "clean:hard": "turbo run clean && rimraf node_modules .turbo pnpm-lock.yaml && echo \"Run: pnpm install\"",
+    "turbo:graph": "turbo run build type-check --graph=graph.html && start graph.html",
+    "turbo:dry": "turbo run type-check --dry=text",
+    "turbo:dry:json": "turbo run type-check --dry=json > turbo-dag.json",
+    "approve-builds": "pnpm approve-builds esbuild @tauri-apps/cli",
+    "desktop:tauri": "pnpm --filter @aikitr-desktop/app-desktop exec tauri"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "rimraf": "^6.1.3",
+    "turbo": "^2.10.8",
+    "typescript": "^7.0.2"
+  }
+}

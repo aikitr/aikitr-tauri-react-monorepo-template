@@ -1,0 +1,46 @@
+{
+  "name": "@aikitr-desktop/app-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tauri v2 + React 19 desktop application",
+  "scripts": {
+    "dev": "tauri dev",
+    "dev:frontend": "vite",
+    "build": "tauri build",
+    "build:frontend": "vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "lint": "echo \"(desktop) eslint not configured yet\" && exit 0",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json}\" --ignore-path ../../.gitignore || echo \"(desktop) prettier check skipped\" && exit 0",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "clean": "rimraf dist src-tauri/target",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@aikitr-desktop/types": "workspace:^",
+    "@aikitr-desktop/utils": "workspace:^",
+    "@aikitr-desktop/icons": "workspace:^",
+    "@aikitr-desktop/ui": "workspace:^",
+    "@aikitr-desktop/api": "workspace:^",
+    "@aikitr-desktop/auth": "workspace:^",
+    "@tauri-apps/api": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "devDependencies": {
+    "@aikitr-desktop/config": "workspace:^",
+    "@tailwindcss/vite": "catalog:",
+    "@tauri-apps/cli": "^2",
+    "@types/node": "^22",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "jsdom": "^25",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
+}

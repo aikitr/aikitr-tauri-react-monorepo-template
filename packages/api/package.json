@@ -1,0 +1,24 @@
+{
+  "name": "@aikitr-desktop/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "sideEffects": false,
+  "dependencies": {
+    "@aikitr-desktop/types": "workspace:^",
+    "@aikitr-desktop/utils": "workspace:^"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit -p tsconfig.json",
+    "lint": "echo \"(api) eslint not configured yet\" && exit 0",
+    "format:check": "echo \"(api) prettier check done via root\" && exit 0",
+    "build": "echo \"(api) source-link mode, skip build\" && exit 0",
+    "test": "echo \"(api) no tests yet\" && exit 0",
+    "clean": "echo \"(api) nothing to clean\" && exit 0"
+  }
+}

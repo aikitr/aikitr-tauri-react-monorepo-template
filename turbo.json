@@ -1,0 +1,140 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "stream",
+  "envMode": "strict",
+  "globalDependencies": [
+    ".env",
+    ".env.local",
+    ".env.*.local",
+    ".env.development",
+    ".env.production",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    ".npmrc",
+    "tsconfig.json"
+  ],
+  "globalEnv": ["NODE_ENV", "DEBUG", "CI", "TAURI_ENVIRONMENT", "VITE_*"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        "dist/**",
+        "build/**",
+        "src-tauri/target/release/**",
+        "src-tauri/target/bundle/**",
+        "!src-tauri/target/**/incremental/**",
+        "!src-tauri/target/**/deps/**"
+      ],
+      "inputs": [
+        "src/**",
+        "vite.config.*",
+        "tsconfig*.json",
+        "package.json",
+        "src-tauri/**/*.rs",
+        "src-tauri/Cargo.toml",
+        "src-tauri/tauri.conf.json",
+        "src-tauri/icons/**"
+      ],
+      "env": ["VITE_*", "TAURI_ENVIRONMENT"]
+    },
+    "type-check": {
+      "dependsOn": ["^type-check"],
+      "outputs": [],
+      "cache": true,
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "tsconfig*.json",
+        "vite.config.*",
+        "package.json"
+      ]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "dev:frontend": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": [],
+      "outputs": [],
+      "cache": true,
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "eslint.config.*",
+        "tsconfig*.json",
+        ".prettierrc*",
+        "package.json"
+      ]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**", ".turbo/test-results/**"],
+      "cache": true,
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/*.test.tsx",
+        "**/*.spec.tsx",
+        "vitest.config.*",
+        "tsconfig*.json",
+        "package.json"
+      ]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "build:frontend": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "inputs": [
+        "src/**",
+        "vite.config.*",
+        "tsconfig*.json",
+        "package.json",
+        "index.html"
+      ],
+      "env": ["VITE_*"]
+    },
+    "preview": {
+      "cache": false,
+      "persistent": true
+    },
+    "tauri": {
+      "cache": false
+    },
+    "format": {
+      "cache": false
+    },
+    "format:check": {
+      "outputs": [],
+      "cache": true,
+      "inputs": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.js",
+        "src/**/*.jsx",
+        "**/*.json",
+        "**/*.md",
+        "**/*.yml",
+        "**/*.yaml",
+        ".prettierrc*",
+        ".prettierignore"
+      ]
+    }
+  }
+}

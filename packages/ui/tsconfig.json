@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "types": [],
+    "paths": {
+      "@aikitr-desktop/utils": ["../../utils/src"],
+      "@aikitr-desktop/types": ["../../types/src"],
+      "@aikitr-desktop/icons": ["../../icons/src"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.spec.ts"]
+}
