@@ -18,10 +18,6 @@
   },
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(icons) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(icons) prettier check done via root\" && exit 0",
-    "build": "echo \"(icons) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(icons) no tests yet\" && exit 0",
-    "clean": "echo \"(icons) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0"
   }
 }

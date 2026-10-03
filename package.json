@@ -5,26 +5,26 @@
   "description": "Enterprise-grade cross-platform desktop application built with Tauri v2, React 19, and TypeScript.",
   "license": "MIT",
   "engines": {
-    "node": ">=20.19.0",
-    "pnpm": ">=10.0.0"
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0",
+    "pnpm": ">=12.7.0"
   },
-  "packageManager": "pnpm@11.13.0",
+  "packageManager": "pnpm@12.7.0",
   "scripts": {
     "build": "turbo run build",
     "build:frontend": "turbo run build:frontend",
     "build:desktop": "turbo run build --filter=@aikitr-desktop/app-desktop",
     "dev": "turbo run dev --filter=@aikitr-desktop/app-desktop",
     "dev:frontend": "turbo run dev:frontend --filter=@aikitr-desktop/app-desktop",
-    "lint": "turbo run lint",
+    "lint": "eslint . --max-warnings 0",
     "lint:packages": "turbo run lint --filter=\"./packages/*\"",
-    "test": "turbo run test",
-    "test:watch": "turbo run test:watch",
-    "type-check": "turbo run type-check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "turbo run type-check && tsc --noEmit -p tsconfig.tests.json",
     "type-check:packages": "turbo run type-check --filter=\"./packages/*\"",
     "type-check:desktop": "turbo run type-check --filter=@aikitr-desktop/app-desktop",
-    "preflight": "turbo run type-check lint format:check test",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\" --ignore-path .gitignore",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,yml,yaml}\" --ignore-path .gitignore",
+    "preflight": "pnpm type-check && pnpm lint && pnpm format:check && pnpm test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,css,json,md,yml,yaml}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,css,json,md,yml,yaml}\" --ignore-path .gitignore",
     "clean": "turbo run clean && rimraf node_modules .turbo",
     "clean:hard": "turbo run clean && rimraf node_modules .turbo pnpm-lock.yaml && echo \"Run: pnpm install\"",
     "turbo:graph": "turbo run build type-check --graph=graph.html && start graph.html",
@@ -34,9 +34,22 @@
     "desktop:tauri": "pnpm --filter @aikitr-desktop/app-desktop exec tauri"
   },
   "devDependencies": {
-    "prettier": "^3.9.6",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.5",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "eslint": "catalog:",
+    "jsdom": "^30.1.1",
+    "prettier": "^3.9.9",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "rimraf": "^6.1.3",
-    "turbo": "^2.10.8",
-    "typescript": "^7.0.2"
-  }
+    "turbo": "^2.11.7",
+    "typescript": "^7.0.2",
+    "vitest": "catalog:"
+  },
+  "type": "module"
 }

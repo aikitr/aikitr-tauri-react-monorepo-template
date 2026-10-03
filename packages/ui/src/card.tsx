@@ -1,20 +1,4 @@
-import type { ReactNode } from "react";
-import { cn } from "@aikitr-desktop/utils";
-
-export interface UiCardProps {
-  className?: string;
-  children?: ReactNode;
-}
-
-export function UiCard({ className, children }: UiCardProps) {
-  return (
-    <div
-      className={cn(
-        "rounded-xl border border-border bg-card text-card-foreground shadow-sm",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
+export { Card as UiCard } from "./components/card";
+import type { ComponentProps } from "react";
+import type { Card } from "./components/card";
+export type UiCardProps = ComponentProps<typeof Card>;

@@ -9,5 +9,13 @@
     "emitDeclarationOnly": false
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "tsconfig.json"],
-  "exclude": ["node_modules", "dist", "coverage", "**/*.test.ts", "**/*.spec.ts"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.tsx",
+    "**/*.spec.tsx"
+  ]
 }

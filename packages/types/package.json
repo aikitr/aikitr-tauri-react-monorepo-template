@@ -11,10 +11,6 @@
   "sideEffects": false,
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(types) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(types) prettier check done via root\" && exit 0",
-    "build": "echo \"(types) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(types) no tests yet\" && exit 0",
-    "clean": "echo \"(types) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@aikitr-desktop/ui/components",
+    "utils": "@aikitr-desktop/ui/lib/utils",
+    "hooks": "@aikitr-desktop/ui/hooks",
+    "lib": "@aikitr-desktop/ui/lib",
+    "ui": "@aikitr-desktop/ui/components"
+  }
+}

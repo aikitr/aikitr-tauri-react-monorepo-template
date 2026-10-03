@@ -34,39 +34,19 @@ export default defineConfig(async () => ({
     },
   },
 
-  // 暴露 VITE_ 和 TAURI_ 前缀的环境变量
-  envPrefix: ["VITE_", "TAURI_"],
+  // 只有明确标记为公开的变量进入前端，避免暴露原生签名环境变量。
+  envPrefix: ["VITE_"],
 
   resolve: {
     alias: {
       // 应用内绝对路径导入
       "@": path.resolve(__dirname, "./src"),
-      // Monorepo 内部包直连源码（免构建，DX 最优）
-      "@aikitr-desktop/ui": path.resolve(__dirname, "../../packages/ui/src"),
-      "@aikitr-desktop/icons": path.resolve(
-        __dirname,
-        "../../packages/icons/src",
-      ),
-      "@aikitr-desktop/utils": path.resolve(
-        __dirname,
-        "../../packages/utils/src",
-      ),
-      "@aikitr-desktop/types": path.resolve(
-        __dirname,
-        "../../packages/types/src",
-      ),
-      "@aikitr-desktop/api": path.resolve(__dirname, "../../packages/api/src"),
-      "@aikitr-desktop/auth": path.resolve(
-        __dirname,
-        "../../packages/auth/src",
-      ),
     },
   },
 
   build: {
     // Tauri webview 目标为现代 Chromium，可用 es2022
     target: "es2022",
-    minify: "esbuild" as const,
     sourcemap: false,
     rollupOptions: {
       output: {

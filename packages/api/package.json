@@ -11,14 +11,12 @@
   "sideEffects": false,
   "dependencies": {
     "@aikitr-desktop/types": "workspace:^",
-    "@aikitr-desktop/utils": "workspace:^"
+    "@aikitr-desktop/utils": "workspace:^",
+    "zod": "catalog:"
   },
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(api) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(api) prettier check done via root\" && exit 0",
-    "build": "echo \"(api) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(api) no tests yet\" && exit 0",
-    "clean": "echo \"(api) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0",
+    "test": "vitest run --config ../../vitest.config.ts --project api"
   }
 }

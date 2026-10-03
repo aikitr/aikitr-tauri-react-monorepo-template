@@ -16,10 +16,6 @@
   },
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(auth) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(auth) prettier check done via root\" && exit 0",
-    "build": "echo \"(auth) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(auth) no tests yet\" && exit 0",
-    "clean": "echo \"(auth) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0"
   }
 }

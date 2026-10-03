@@ -1,4 +1,8 @@
-import type { AppErrorCode, AppErrorShape, Result } from "@aikitr-desktop/types";
+import type {
+  AppErrorCode,
+  AppErrorShape,
+  Result,
+} from "@aikitr-desktop/types";
 
 /**
  * 统一应用错误

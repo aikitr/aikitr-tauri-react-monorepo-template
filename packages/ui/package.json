@@ -4,19 +4,24 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./lib/*": "./src/lib/*.ts",
+    "./hooks/*": "./src/hooks/*.ts",
+    "./globals.css": "./src/styles/globals.css"
   },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "dependencies": {
-    "@aikitr-desktop/types": "workspace:^",
-    "@aikitr-desktop/utils": "workspace:^",
-    "@aikitr-desktop/icons": "workspace:^",
-    "clsx": "catalog:",
-    "tailwind-merge": "catalog:",
+    "@base-ui/react": "catalog:",
     "class-variance-authority": "catalog:",
-    "react": "catalog:"
+    "react": "catalog:",
+    "lucide-react": "catalog:",
+    "tw-animate-css": "catalog:",
+    "cn": "catalog:"
   },
   "devDependencies": {
     "@types/react": "catalog:",
@@ -24,10 +29,10 @@
   },
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(ui) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(ui) prettier check done via root\" && exit 0",
-    "build": "echo \"(ui) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(ui) no tests yet\" && exit 0",
-    "clean": "echo \"(ui) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0",
+    "test": "vitest run --config ../../vitest.config.ts --project ui"
+  },
+  "peerDependencies": {
+    "react-dom": "^19.0.0"
   }
 }

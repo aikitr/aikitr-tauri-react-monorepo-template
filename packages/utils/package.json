@@ -11,15 +11,10 @@
   "sideEffects": false,
   "dependencies": {
     "@aikitr-desktop/types": "workspace:^",
-    "clsx": "catalog:",
-    "tailwind-merge": "catalog:"
+    "cn": "catalog:"
   },
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(utils) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(utils) prettier check done via root\" && exit 0",
-    "build": "echo \"(utils) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(utils) no tests yet\" && exit 0",
-    "clean": "echo \"(utils) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0"
   }
 }

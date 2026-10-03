@@ -5,20 +5,26 @@
   "type": "module",
   "exports": {
     "./tsconfig": "./tsconfig.json",
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./eslint": "./eslint.mjs"
   },
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "files": [
     "tsconfig.json",
-    "src"
+    "src",
+    "eslint.mjs"
   ],
   "scripts": {
     "type-check": "tsc --noEmit -p tsconfig.json",
-    "lint": "echo \"(config) eslint not configured yet\" && exit 0",
-    "format:check": "echo \"(config) prettier check done via root\" && exit 0",
-    "build": "echo \"(config) source-link mode, skip build\" && exit 0",
-    "test": "echo \"(config) no tests yet\" && exit 0",
-    "clean": "echo \"(config) nothing to clean\" && exit 0"
+    "lint": "eslint src --max-warnings 0"
+  },
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "catalog:",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.71.0"
   }
 }

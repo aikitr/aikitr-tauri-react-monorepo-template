@@ -8,7 +8,9 @@ export function isNonEmptyString(v: unknown): v is string {
 export function isUUID(v: unknown): v is string {
   return (
     typeof v === "string" &&
-    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(v)
+    /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(
+      v,
+    )
   );
 }
 
@@ -45,8 +47,17 @@ export function validationCodeFor(
 /** 类型断言辅助：把 unknown 的错误码收窄为合法 AppErrorCode */
 export function asAppErrorCode(v: unknown): AppErrorCode {
   const known = new Set<AppErrorCode>([
-    "UNKNOWN", "NETWORK", "UNAUTHORIZED", "FORBIDDEN", "NOT_FOUND",
-    "VALIDATION", "TIMEOUT", "CANCELLED", "FILESYSTEM", "WINDOW", "PERMISSION",
+    "UNKNOWN",
+    "NETWORK",
+    "UNAUTHORIZED",
+    "FORBIDDEN",
+    "NOT_FOUND",
+    "VALIDATION",
+    "TIMEOUT",
+    "CANCELLED",
+    "FILESYSTEM",
+    "WINDOW",
+    "PERMISSION",
   ]);
   return known.has(v as AppErrorCode) ? (v as AppErrorCode) : "UNKNOWN";
 }

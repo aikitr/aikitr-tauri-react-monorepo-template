@@ -11,48 +11,42 @@
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml",
     ".npmrc",
-    "tsconfig.json"
+    "tsconfig.json",
+    "eslint.config.mjs",
+    "packages/config/eslint.mjs",
+    ".cargo/config.toml"
   ],
   "globalEnv": ["NODE_ENV", "DEBUG", "CI", "TAURI_ENVIRONMENT", "VITE_*"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": [
-        "dist/**",
-        "build/**",
-        "src-tauri/target/release/**",
-        "src-tauri/target/bundle/**",
-        "!src-tauri/target/**/incremental/**",
-        "!src-tauri/target/**/deps/**"
-      ],
+      "cache": false,
       "inputs": [
-        "src/**",
-        "vite.config.*",
-        "tsconfig*.json",
-        "package.json",
-        "src-tauri/**/*.rs",
-        "src-tauri/Cargo.toml",
-        "src-tauri/tauri.conf.json",
-        "src-tauri/icons/**"
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/*/src/**",
+        "$TURBO_ROOT$/packages/*/package.json",
+        "$TURBO_ROOT$/packages/*/tsconfig.json",
+        "$TURBO_ROOT$/packages/*/components.json"
       ],
-      "env": ["VITE_*", "TAURI_ENVIRONMENT"]
+      "env": ["VITE_*", "TAURI_ENVIRONMENT"],
+      "passThroughEnv": ["CARGO_*", "RUST*", "TAURI_SIGNING_*", "TAURI_ENV_*"]
     },
     "type-check": {
       "dependsOn": ["^type-check"],
       "outputs": [],
       "cache": true,
       "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "tsconfig*.json",
-        "vite.config.*",
-        "package.json"
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/*/src/**",
+        "$TURBO_ROOT$/packages/*/package.json",
+        "$TURBO_ROOT$/packages/*/tsconfig.json",
+        "$TURBO_ROOT$/packages/*/components.json"
       ]
     },
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "passThroughEnv": ["CARGO_*", "RUST*", "TAURI_SIGNING_*", "TAURI_ENV_*"]
     },
     "dev:frontend": {
       "cache": false,
@@ -63,32 +57,25 @@
       "outputs": [],
       "cache": true,
       "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "eslint.config.*",
-        "tsconfig*.json",
-        ".prettierrc*",
-        "package.json"
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/*/src/**",
+        "$TURBO_ROOT$/packages/*/package.json",
+        "$TURBO_ROOT$/packages/*/tsconfig.json",
+        "$TURBO_ROOT$/packages/*/components.json"
       ]
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "outputs": ["coverage/**", ".turbo/test-results/**"],
       "cache": true,
       "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "**/*.test.ts",
-        "**/*.spec.ts",
-        "**/*.test.tsx",
-        "**/*.spec.tsx",
-        "vitest.config.*",
-        "tsconfig*.json",
-        "package.json"
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/*/src/**",
+        "$TURBO_ROOT$/packages/*/package.json",
+        "$TURBO_ROOT$/packages/*/tsconfig.json",
+        "$TURBO_ROOT$/packages/*/components.json",
+        "$TURBO_ROOT$/vitest.config.ts",
+        "$TURBO_ROOT$/tests/setup-dom.ts"
       ]
     },
     "test:watch": {
@@ -99,14 +86,14 @@
       "cache": false
     },
     "build:frontend": {
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "outputs": ["dist/**"],
       "inputs": [
-        "src/**",
-        "vite.config.*",
-        "tsconfig*.json",
-        "package.json",
-        "index.html"
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/*/src/**",
+        "$TURBO_ROOT$/packages/*/package.json",
+        "$TURBO_ROOT$/packages/*/tsconfig.json",
+        "$TURBO_ROOT$/packages/*/components.json"
       ],
       "env": ["VITE_*"]
     },
@@ -119,22 +106,7 @@
     },
     "format": {
       "cache": false
-    },
-    "format:check": {
-      "outputs": [],
-      "cache": true,
-      "inputs": [
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "src/**/*.js",
-        "src/**/*.jsx",
-        "**/*.json",
-        "**/*.md",
-        "**/*.yml",
-        "**/*.yaml",
-        ".prettierrc*",
-        ".prettierignore"
-      ]
     }
-  }
+  },
+  "globalPassThroughEnv": ["TAURI_DEV_HOST"]
 }

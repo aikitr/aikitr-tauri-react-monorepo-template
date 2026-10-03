@@ -90,7 +90,10 @@ export class MockAuthBackend implements AuthBackend {
 
   public async login(credentials: Credentials): Promise<AuthSession> {
     await new Promise((r) => setTimeout(r, this.latencyMs));
-    if (credentials.email !== "demo@aikitr.dev" || credentials.password !== "demo123") {
+    if (
+      credentials.email !== "demo@aikitr.dev" ||
+      credentials.password !== "demo123"
+    ) {
       throw new AppError(
         "UNAUTHORIZED" satisfies AppErrorShape["code"],
         "Invalid credentials. Try demo@aikitr.dev / demo123",
