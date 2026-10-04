@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aikitr Tauri React Monorepo 工程规范"
+  short_description: "Tauri 2、React、shadcn 的架构、安全、测试、数据治理与企业交付规范"
+  default_prompt: "使用 $aikitr-tauri-react-monorepo-standards 按实际启用能力评审或设计项目规范，并给出责任、验证证据与渐进落地清单。"

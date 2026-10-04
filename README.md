@@ -29,6 +29,8 @@ The shared ESLint package uses TypeScript 6.0.3 internally because the installed
 
 ```text
 aikitr-desktop
+├── .agents/skills/       # Versioned repository agent skills
+├── AGENTS.md            # Repository guidance and standards entry point
 ├── apps/desktop/
 │   ├── src/app/providers/ # Global UI providers
 │   ├── src/lib/services/  # Native command adapters
@@ -48,6 +50,12 @@ aikitr-desktop
 ```
 
 Shared packages export TypeScript source directly; they do not require placeholder build tasks. Application business logic belongs in `apps/desktop`; UI components must not depend on application features or native commands.
+
+## Engineering Standards
+
+The [Aikitr Tauri React Monorepo standards skill](.agents/skills/aikitr-tauri-react-monorepo-standards/SKILL.md) is maintained in this repository. It includes architecture and naming rules, 17 engineering topics, and reusable review and delivery templates. Its entry point loads detailed references only when relevant to the task.
+
+Agents can invoke `$aikitr-tauri-react-monorepo-standards`; repository guidance is in [AGENTS.md](AGENTS.md). Keep changes to the skill, its references, and templates together in version control. The layout follows the [official repository skill documentation](https://learn.chatgpt.com/docs/build-skills). Adoption of the standards is evaluated against implemented capabilities and actual verification evidence.
 
 ## Getting Started
 
